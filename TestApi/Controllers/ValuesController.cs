@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
+using TestApi.Model;
 
 namespace TestApi.Controllers
 {
@@ -8,6 +9,10 @@ namespace TestApi.Controllers
     [ApiVersion("1.0")]
     public class ValuesController : ControllerBase
     {
+        // GET api/values/test?id=123
+        [HttpGet("test")]
+        public ActionResult<IEnumerable<string>> Test([FromQuery]Query q) => Ok(q);
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get() => new string[] { "value1", "value2" };
